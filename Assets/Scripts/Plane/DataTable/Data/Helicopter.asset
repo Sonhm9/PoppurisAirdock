@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cd0c5d4c7c271b4598f9e6903f39dea, type: 3}
+  m_Name: Helicopter
+  m_EditorClassIdentifier: 
+  planeName: Helicopter
+  planePrefab: {fileID: 8220252519368594150, guid: 2a4d480340c1e1146b93dcf3b9113693,
+    type: 3}
+  productTime: 10

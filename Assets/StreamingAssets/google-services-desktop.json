@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "665600304926",
+    "project_id": "popurisairdockzero",
+    "storage_bucket": "popurisairdockzero.appspot.com",
+    "firebase_url": "https://popurisairdockzero-default-rtdb.firebaseio.com/"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:665600304926:android:4fad69b356f7a05c6b8b0f",
+        "android_client_info": {
+          "package_name": "com.Hemman.PoppurisAirDock"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "665600304926-65rovgjnks7ondl3esg4uc3m9q5tb90b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.Hemman.PoppurisAirDock",
+            "certificate_hash": "edd6dcd0ad352a42e10262a1fc0013c68036ea41"
+          }
+        },
+        {
+          "client_id": "665600304926-cskenqned8hv3i28nevj2rqvub400oju.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.Hemman.PoppurisAirDock",
+            "certificate_hash": "c200a49198c411d2c4267abe012d7ecd5450f73b"
+          }
+        },
+        {
+          "client_id": "665600304926-1olu8gm72te6tfainfg1f9k34e45r62a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQ7Asw4o85zU5498ieGpqOI4_H2GltUSo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "665600304926-1olu8gm72te6tfainfg1f9k34e45r62a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

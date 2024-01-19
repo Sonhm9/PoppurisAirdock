@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Mainmap
+  - BuildAble
+  - BuildPosition
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - Mainmap
+  - Water
+  - UI
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: BackView
+    uniqueID: 2585631713
+    locked: 0
+  - name: Mainmap
+    uniqueID: 3587931021
+    locked: 0
+  - name: Rayout
+    uniqueID: 4198079869
+    locked: 0
+  - name: Build
+    uniqueID: 2174094061
+    locked: 0
+  - name: Center
+    uniqueID: 3824241247
+    locked: 0
+  - name: UI
+    uniqueID: 4265023163
+    locked: 0

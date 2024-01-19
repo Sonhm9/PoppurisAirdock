@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:keep="@string/firebase_database_url,@string/gcm_defaultSenderId,@string/google_storage_bucket,@string/project_id,@string/google_api_key,@string/google_crash_reporting_api_key,@string/google_app_id,@string/default_android_client_id,@string/default_web_client_id">
+  <string name="firebase_database_url" translatable="false">https://popurisairdockzero-default-rtdb.firebaseio.com/</string>
+  <string name="gcm_defaultSenderId" translatable="false">665600304926</string>
+  <string name="google_storage_bucket" translatable="false">popurisairdockzero.appspot.com</string>
+  <string name="project_id" translatable="false">popurisairdockzero</string>
+  <string name="google_api_key" translatable="false">AIzaSyDQ7Asw4o85zU5498ieGpqOI4_H2GltUSo</string>
+  <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDQ7Asw4o85zU5498ieGpqOI4_H2GltUSo</string>
+  <string name="google_app_id" translatable="false">1:665600304926:android:4fad69b356f7a05c6b8b0f</string>
+  <string name="default_android_client_id" translatable="false">665600304926-65rovgjnks7ondl3esg4uc3m9q5tb90b.apps.googleusercontent.com</string>
+  <string name="default_web_client_id" translatable="false">665600304926-1olu8gm72te6tfainfg1f9k34e45r62a.apps.googleusercontent.com</string>
+</resources>
