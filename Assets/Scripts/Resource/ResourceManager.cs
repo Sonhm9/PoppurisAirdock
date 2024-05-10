@@ -48,16 +48,7 @@ public class ResourceManager : MonoBehaviour
     private InfVal startGold = 0;// 시작 골드 값
     private InfVal startEnergy = 0; // 시작 에너지 값
     private InfVal startDiamond = 0; // 시작 다이아 값
-
-    public event Action<ResourceType, InfVal> OnResourceChanged;
-
-    public enum ResourceType
-    {
-        Gold,
-        Energy,
-        Diamond
-    }
-
+    public bool resourceConsumeSuccess; // 자원 소모 성공
     private void Awake()
     {
         _instance = this;
@@ -70,6 +61,14 @@ public class ResourceManager : MonoBehaviour
     {
         applicationQuitting = true;
     }
+
+    public enum ResourceType
+    {
+        Gold,
+        Energy,
+        Diamond
+    }
+    public event Action<ResourceType, InfVal> OnResourceChanged;
 
     public InfVal CurrentGold
     {
@@ -86,7 +85,6 @@ public class ResourceManager : MonoBehaviour
         }
     } 
     // 골드 프로퍼티
-
     public InfVal CurrentEnergy
     { 
         get { return currentEnergy; }
@@ -102,7 +100,6 @@ public class ResourceManager : MonoBehaviour
 
     }
     // 에너지 프로퍼티
-
     public InfVal CurrentDiamond 
     { 
         get { return currentDiamond; }
@@ -180,6 +177,32 @@ public class ResourceManager : MonoBehaviour
                 else Debug.Log($"{resourceType}이 부족합니다.");
                 break;
         }
+    }
+
+    public void CheckRemoveResources(ResourceType[] resourceTypes, int[] amount)
+    {
+        for(int i=0; i<resourceTypes.Length; i++)
+        {
+            // 소모 가능 여부 확인
+            if (GetResourceValue(resourceTypes[i]) >= amount[i])
+            {
+                resourceConsumeSuccess = true;
+            }
+            else
+            {
+                resourceConsumeSuccess = false;
+                break;
+            }
+        }
+        if (resourceConsumeSuccess)
+        {
+            // 소모 가능하면 소모
+            for (int i = 0; i < resourceTypes.Length; i++)
+            {
+                RemoveResource(resourceTypes[i], amount[i]);
+            }
+        }
+        
     }
 
     private IEnumerator IncreaseResourceValue(ResourceType resourceType, InfVal startValue, InfVal endValue)

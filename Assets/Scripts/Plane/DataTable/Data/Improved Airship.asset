@@ -15,4 +15,6 @@ MonoBehaviour:
   planeName: Improved Airship
   planePrefab: {fileID: 4445635240276065686, guid: 43a967ac7d3336347a78f17bccdd42a3,
     type: 3}
+  planeIconPrefab: {fileID: 6126975937785431183, guid: 90ffccf1652a9c94699dfee8a20fbcfd,
+    type: 3}
   productTime: 10

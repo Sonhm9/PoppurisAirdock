@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class UIButtonController : MonoBehaviour
 {
-    public GameObject uiPanelToOpen;
-    public UIManager uiManager;
+    [SerializeField] GameObject uiPanelToOpen;
+    [SerializeField] UIManager uiManager;
 
     public void OpenUI()
     {

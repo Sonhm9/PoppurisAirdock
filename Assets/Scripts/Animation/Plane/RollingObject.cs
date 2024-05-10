@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RollingObject : MonoBehaviour
 {
-    public GameObject obj01;
+    [SerializeField] GameObject obj01;
 
     private float rotateSpeed = 100f;
 

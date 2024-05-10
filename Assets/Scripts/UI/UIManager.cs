@@ -7,13 +7,13 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    public Button[] buttons; // 버튼 배열
+    [SerializeField] Button[] buttons; // 버튼 배열
 
-    public GameObject activeUI; // 활성화 된 UI
+    [SerializeField] public GameObject activeUI; // 활성화 된 UI
 
-    public GameObject popUpBackground; // UI 백그라운드 이미지
-    public GameObject cancleButton;
-    public  MonoBehaviour cameraMove; // 카메라 제어
+    [SerializeField] public GameObject popUpBackground; // UI 백그라운드 이미지
+    [SerializeField] public GameObject cancleButton;
+    [SerializeField] MonoBehaviour cameraMove; // 카메라 제어
 
     private static object _lock = new object();
     private static UIManager _instance = null;

@@ -15,4 +15,6 @@ MonoBehaviour:
   planeName: Helicopter
   planePrefab: {fileID: 8220252519368594150, guid: 2a4d480340c1e1146b93dcf3b9113693,
     type: 3}
+  planeIconPrefab: {fileID: 6126975937785431183, guid: 80b45f78b6721f644859075ccc931771,
+    type: 3}
   productTime: 10

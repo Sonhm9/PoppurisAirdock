@@ -15,4 +15,6 @@ MonoBehaviour:
   planeName: AirShip
   planePrefab: {fileID: 5695124109823764244, guid: 0ae5032ca91014c4c89e63ba9a2fa51d,
     type: 3}
+  planeIconPrefab: {fileID: 6126975937785431183, guid: 9db232cde04034543a1b4d2eb1b53091,
+    type: 3}
   productTime: 10

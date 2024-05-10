@@ -15,4 +15,6 @@ MonoBehaviour:
   planeName: MiniPlane
   planePrefab: {fileID: 1662801084258966522, guid: 6ef7cc5109cdd7e48b47477d9f8be3f1,
     type: 3}
+  planeIconPrefab: {fileID: 6126975937785431183, guid: bd37d5882f7822f4c9b5d07293024904,
+    type: 3}
   productTime: 10

@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class PopuriSetMaterial : MonoBehaviour
 {
-    [SerializeField]
-    private Material[] popuriUVs;
+    [SerializeField] Material[] popuriUVs;
     void Awake()
     {
         RandomSetMaterial(popuriUVs);

@@ -6,11 +6,11 @@ using UnityEngine.UI;
 
 public class UISwitchButtonController : MonoBehaviour
 {
-    public GameObject[] contentPanels; // 버튼에 대응하는 컨텐츠 패널들
-    public Button[] buttons; // 버튼 배열
-    public GameObject[] buttonsTexts; // 버튼에 해당하는 글자
+    [SerializeField] GameObject[] contentPanels; // 버튼에 대응하는 컨텐츠 패널들
+    [SerializeField] Button[] buttons; // 버튼 배열
+    [SerializeField] GameObject[] buttonsTexts; // 버튼에 해당하는 글자
 
-    public ScrollbarController scrollbarController;
+    [SerializeField] ScrollbarController scrollbarController;
 
     private void Start()
     {

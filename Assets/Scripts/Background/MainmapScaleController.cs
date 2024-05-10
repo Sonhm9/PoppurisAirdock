@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MainmapScaleController : MonoBehaviour
 {
-    public SpriteRenderer mainMap; // ∏ﬁ¿Œ ∏ 
+    [SerializeField] SpriteRenderer mainMap; // ∏ﬁ¿Œ ∏ 
     private BoxCollider mainMapCollider; // ∏ﬁ¿Œ ∏  ƒ›∂Û¿Ã¥ı
 
     void Start()

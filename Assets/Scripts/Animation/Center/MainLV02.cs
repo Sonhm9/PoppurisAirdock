@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class MainLV02 : MonoBehaviour
 {
-    public GameObject obj01;
-    public GameObject obj02;
+    [SerializeField] GameObject obj01;
+    [SerializeField] GameObject obj02;
 
     private float rotateSpeed = 20f;
 

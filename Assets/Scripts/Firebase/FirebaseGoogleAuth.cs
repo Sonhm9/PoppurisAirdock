@@ -16,9 +16,9 @@ public class FirebaseGoogleAuth : MonoBehaviour
         PlayGamesPlatform.DebugLogEnabled = true;
         PlayGamesPlatform.Activate();//구글플레이 플랫폼 활성화
         //위의 함수를 실행하면 Social.Active= PlayGamesPlatform.Instance가 된다
-        // Firebase 초기화
         FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(task =>
         {
+            // Firebase 초기화
             FirebaseApp app = FirebaseApp.DefaultInstance;
             databaseReference = FirebaseDatabase.DefaultInstance.RootReference;
             isFirebaseInitialized = true;

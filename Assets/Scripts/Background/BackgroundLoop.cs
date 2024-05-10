@@ -6,10 +6,8 @@ public class BackgroundLoop : MonoBehaviour
 {
     public static float backgroundWidth; // 배경 가로 길이
 
-    [SerializeField]
-    private GameObject cloudPrefab; // 구름 프리팹
-    [SerializeField]
-    private Transform cloudPosition; // 구름 시작 위치
+    [SerializeField] GameObject cloudPrefab; // 구름 프리팹
+    [SerializeField] Transform cloudPosition; // 구름 시작 위치
 
 
     private void Awake()

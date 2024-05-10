@@ -7,7 +7,7 @@ using System;
 
 public class ArtifactController : MonoBehaviour
 {
-    public ArtifactDataTable artifactData;
+    [SerializeField] ArtifactDataTable artifactData;
     private float energyProductTime = 1f; // 에너지 생산 시간(초)
     private InfVal energyTotalValue { get; set; } // 에너지 총 량
     private InfVal energyProductValue { get; set; } // 초 당 에너지 생산 량
@@ -42,6 +42,7 @@ public class ArtifactController : MonoBehaviour
 
         StartCoroutine(ProduceEnergyRoutine());
     }
+
     private void InitializeArtifactValue()
     {
         // 모든 아티팩트 종류에 대해 초기 값을 0으로 설정
@@ -69,6 +70,7 @@ public class ArtifactController : MonoBehaviour
             yield return new WaitUntil(() => energyNowValue == 0);
         }
     }
+
     public void AddEnergyValue()
     {
         if (energyNowValue > 10)

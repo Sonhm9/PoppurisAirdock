@@ -7,9 +7,8 @@ using InfiniteValue;
 
 public class ResourceUIText : MonoBehaviour
 {
-    [SerializeField]
-    private TextMeshProUGUI textMesh;
-    public ResourceManager.ResourceType resourceType;
+    [SerializeField] TextMeshProUGUI textMesh;
+    [SerializeField] ResourceManager.ResourceType resourceType;
 
     private void OnEnable()
     {

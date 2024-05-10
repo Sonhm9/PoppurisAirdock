@@ -15,4 +15,6 @@ MonoBehaviour:
   planeName: Bicha
   planePrefab: {fileID: 5793174363843164594, guid: cf87c5e559c37704c9188833e2b256fd,
     type: 3}
+  planeIconPrefab: {fileID: 6126975937785431183, guid: 9d95e882692c6574eb411a25bd6f0fa3,
+    type: 3}
   productTime: 10

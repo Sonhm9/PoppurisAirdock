@@ -13,6 +13,5 @@ MonoBehaviour:
   m_Name: WoodBody
   m_EditorClassIdentifier: 
   buildingType: WoodBody
-  buildingLevel: 1
   animationState: 2
-  productTime: 60
+  productTime: 16

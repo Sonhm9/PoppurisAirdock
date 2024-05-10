@@ -15,4 +15,6 @@ MonoBehaviour:
   planeName: AirBalloon
   planePrefab: {fileID: 6284728056628695753, guid: b5d87f112fcc44c48a13ae30d9a73174,
     type: 3}
+  planeIconPrefab: {fileID: 6126975937785431183, guid: ebd5e6e74a686d64784702b0ebbcef4b,
+    type: 3}
   productTime: 10

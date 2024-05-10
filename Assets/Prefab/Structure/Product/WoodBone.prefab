@@ -68,6 +68,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 0
+  consumeItemType: 
+  consumeItemCount: 
 --- !u!114 &1533021373119722500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80,7 +82,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd8c7770cdaf7324eaf132466d7a1b5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rayout: {fileID: 0}
 --- !u!65 &1650381685
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -417,7 +418,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Popuri
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7173684344635309555, guid: a408e11f24bd6fb40aa59251de739ab7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a408e11f24bd6fb40aa59251de739ab7, type: 3}
 --- !u!4 &7233556744859031445 stripped
 Transform:

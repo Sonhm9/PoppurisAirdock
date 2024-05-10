@@ -5,7 +5,7 @@ using TMPro;
 
 public class PlaneDisplay : MonoBehaviour
 {
-    public TextMeshProUGUI timeRemainingText; // UI Text 요소
+    [SerializeField] TextMeshProUGUI timeRemainingText; // UI Text 요소
 
     public void DisplayTime(float remainingTime)
     {

@@ -13,6 +13,5 @@ MonoBehaviour:
   m_Name: LowEngine
   m_EditorClassIdentifier: 
   buildingType: LowEngine
-  buildingLevel: 1
-  animationState: 1
-  productTime: 120
+  animationState: 4
+  productTime: 30

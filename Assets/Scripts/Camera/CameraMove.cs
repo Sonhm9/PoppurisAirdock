@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class CameraMove : MonoBehaviour
 {
-    public GameObject rayout;
+    [SerializeField] GameObject rayout;
 
-    public Camera cam; // 카메라
+    [SerializeField] Camera cam; // 카메라
 
 
     /* Swipe 관련 변수 */

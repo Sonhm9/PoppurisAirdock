@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class BuildPositionManager : MonoBehaviour
 {
-    public GameObject buildCancleButton; // 건설 취소 버튼
-    public MonoBehaviour cameraMove; // 카메라 제어
-    public GameObject buildScrollView; // 빌드 스크롤뷰
-    public GameObject structurePrefab; // 건물 프리팹
-    public SpriteRenderer mainMap; // 메인 맵
-    public GameObject clickRayout;
+    [SerializeField] GameObject buildCancleButton; // 건설 취소 버튼
+    [SerializeField] MonoBehaviour cameraMove; // 카메라 제어
+    [SerializeField] GameObject buildScrollView; // 빌드 스크롤뷰
+    [SerializeField] public GameObject structurePrefab; // 건물 프리팹
+    [SerializeField] SpriteRenderer mainMap; // 메인 맵
+    [SerializeField] public GameObject clickRayout;
 
-    public List<GameObject> currentPlacePositions = new List<GameObject>(); // 현재 배치된 포지션
-    public List<GameObject> EmptyPositions = new List<GameObject>(); // 빈 포지션
+    [SerializeField] List<GameObject> currentPlacePositions = new List<GameObject>(); // 현재 배치된 포지션
+    [SerializeField] List<GameObject> EmptyPositions = new List<GameObject>(); // 빈 포지션
 
     private int widthOrHeight = 0; // 가로0 세로1
 
-    public List<GameObject> buildPosition = new List<GameObject>(); // 기본 포지션
+    [SerializeField] List<GameObject> buildPosition = new List<GameObject>(); // 기본 포지션
 
 
     [HideInInspector]
@@ -143,7 +143,12 @@ public class BuildPositionManager : MonoBehaviour
             SpriteRenderer rayout = position.GetComponent<SpriteRenderer>();
             rayout.enabled = false;
         }
-
+        foreach (GameObject position in currentPlacePositions)
+        {
+            // 배치 포지션 레이아웃 비활성화
+            SpriteRenderer rayout = position.GetComponent<SpriteRenderer>();
+            rayout.enabled = false;
+        }
         buildModeState = false; // 빌드모드 비활성화
 
         buildCancleButton.SetActive(false); // 빌드 취소 버튼 비활성화

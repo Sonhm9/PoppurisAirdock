@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BuildPositionController : MonoBehaviour
 {
-    public GameObject structureType;
+    [SerializeField] GameObject structureType;
     public void setStructureType()
     {
         BuildPositionManager.instance.structurePrefab = structureType;

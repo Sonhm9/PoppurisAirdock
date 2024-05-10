@@ -5,10 +5,9 @@ using TMPro;
 
 public class StructItemTextController : MonoBehaviour
 {
-    [SerializeField]
-    private TextMeshProUGUI textMesh;
-    public StructItemManager.ItemType itemType; // 아이템을 정의할 변수
-    public int itemCount; // 아이템 생산 필요갯수
+    [SerializeField] TextMeshProUGUI textMesh;
+    [SerializeField] StructItemManager.ItemType itemType; // 아이템을 정의할 변수
+    [SerializeField] int itemCount; // 아이템 생산 필요갯수
 
     private void OnEnable()
     {

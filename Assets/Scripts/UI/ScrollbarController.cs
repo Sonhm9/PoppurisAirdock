@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class ScrollbarController : MonoBehaviour
 {
-    public Scrollbar scrollbar;
+    [SerializeField] Scrollbar scrollbar;
     void Start()
     {
         scrollbar = GetComponent<Scrollbar>();
