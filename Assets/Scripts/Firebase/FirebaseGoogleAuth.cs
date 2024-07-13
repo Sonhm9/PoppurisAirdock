@@ -14,8 +14,7 @@ public class FirebaseGoogleAuth : MonoBehaviour
     private void Start()
     {
         PlayGamesPlatform.DebugLogEnabled = true;
-        PlayGamesPlatform.Activate();//구글플레이 플랫폼 활성화
-        //위의 함수를 실행하면 Social.Active= PlayGamesPlatform.Instance가 된다
+        PlayGamesPlatform.Activate();// 구글플레이 플랫폼 활성화
         FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(task =>
         {
             // Firebase 초기화
@@ -53,28 +52,28 @@ public class FirebaseGoogleAuth : MonoBehaviour
         });
     }
 
-    /* Firebase에 유저 데이터를 저장하는 함수 */
     private void SaveUserDataToFirebase()
     {
+        // Firebase에 유저 데이터를 저장하는 메서드
         string userId = Social.localUser.id;
         string userName = Social.localUser.userName;
 
-        // 예시로 'users' 노드에 유저 데이터 저장
         User user = new User(userId, userName);
         string json = JsonUtility.ToJson(user);
 
-        // Firebase에 데이터 업로드
+
+        // users 노드에 유저 데이터 저장
         databaseReference.Child("users").Child(userId).SetRawJsonValueAsync(json);
     }
 
-    /* Firebase에서 유저 데이터를 불러오는 함수 */
     private void LoadUserDataFromFirebase()
     {
+        // Firebase에서 유저 데이터를 불러오는 메서드
         string userId = Social.localUser.id;
 
-        // Firebase에서 데이터 다운로드
         databaseReference.Child("users").Child(userId).GetValueAsync().ContinueWithOnMainThread(task =>
         {
+            // Firebase에서 데이터 다운로드
             if (task.IsCompleted)
             {
                 DataSnapshot snapshot = task.Result;
@@ -85,7 +84,6 @@ public class FirebaseGoogleAuth : MonoBehaviour
                     User loadedUser = JsonUtility.FromJson<User>(json);
 
                     Debug.Log("불러온 유저 이름: " + loadedUser.userName);
-                    // 추가적으로 필요한 처리 수행
                 }
                 else
                 {

@@ -11,6 +11,7 @@ public class ResourceManager : MonoBehaviour
     private static ResourceManager _instance = null;
     public static ResourceManager instance
     {
+        // 싱글톤
         get
         {
             if (applicationQuitting)
@@ -35,7 +36,7 @@ public class ResourceManager : MonoBehaviour
     }
     private static bool applicationQuitting = false;
 
-    // 싱글톤
+
     [SerializeField]
     private InfVal currentGold; // 현재 골드 값
 
@@ -45,17 +46,13 @@ public class ResourceManager : MonoBehaviour
     [SerializeField]
     private InfVal currentDiamond; // 현재 다이아 값
 
-    private InfVal startGold = 0;// 시작 골드 값
-    private InfVal startEnergy = 0; // 시작 에너지 값
-    private InfVal startDiamond = 0; // 시작 다이아 값
     public bool resourceConsumeSuccess; // 자원 소모 성공
+
+    private string keyName = "resourceDatas";
+
     private void Awake()
     {
         _instance = this;
-
-        CurrentGold = startGold;
-        CurrentEnergy = startEnergy;
-        CurrentDiamond = startDiamond;
     }
     private void OnDestroy()
     {
@@ -77,11 +74,12 @@ public class ResourceManager : MonoBehaviour
         {
             if (value != currentGold) // 값이 변경된 경우에만 애니메이션 실행
             {
-                StartCoroutine(IncreaseResourceValue(ResourceType.Gold, currentGold, value));
+                StartCoroutine(ChangeResourceValue(ResourceType.Gold, currentGold, value));
             }
             currentGold = value;
+            UpgradeManager.instance.FindMaxUpgradeCost();
 
-            Debug.Log(currentGold);
+
         }
     } 
     // 골드 프로퍼티
@@ -92,10 +90,9 @@ public class ResourceManager : MonoBehaviour
         {
             if (value != currentEnergy) // 값이 변경된 경우에만 애니메이션 실행
             {
-                StartCoroutine(IncreaseResourceValue(ResourceType.Energy, currentEnergy, value));
+                StartCoroutine(ChangeResourceValue(ResourceType.Energy, currentEnergy, value));
             }
             currentEnergy = value;
-            Debug.Log(currentEnergy);
         }
 
     }
@@ -107,10 +104,9 @@ public class ResourceManager : MonoBehaviour
         {
             if (value != currentDiamond) // 값이 변경된 경우에만 애니메이션 실행
             {
-                StartCoroutine(IncreaseResourceValue(ResourceType.Diamond, currentDiamond, value));
+                StartCoroutine(ChangeResourceValue(ResourceType.Diamond, currentDiamond, value));
             }
             currentDiamond = value;
-            Debug.Log(currentDiamond);
         }
     }
     // 다이아 프로퍼티
@@ -205,7 +201,7 @@ public class ResourceManager : MonoBehaviour
         
     }
 
-    private IEnumerator IncreaseResourceValue(ResourceType resourceType, InfVal startValue, InfVal endValue)
+    private IEnumerator ChangeResourceValue(ResourceType resourceType, InfVal startValue, InfVal endValue)
     {
         float duration = 1.0f; // 애니메이션 지속 시간 (초)
         float elapsedTime = 0f;
@@ -221,6 +217,30 @@ public class ResourceManager : MonoBehaviour
         }
 
         OnResourceChanged?.Invoke(resourceType, endValue);
+    }
+    public void SaveResourceData()
+    {
+        // 자원 저장 메서드
+        // 각 자원을 저장데이터에 대입
+        DataSaveManager.instance.saveDatas.gold = GetResourceValue(ResourceType.Gold).ToString();
+        DataSaveManager.instance.saveDatas.energy = GetResourceValue(ResourceType.Energy).ToString();
+        DataSaveManager.instance.saveDatas.diamond = GetResourceValue(ResourceType.Diamond).ToString();
+
+        // 데이터 저장
+        DataSaveManager.instance.DataSave(keyName);
+    }
+    public void LoadResourceData()
+    {
+        DataSaveManager.instance.LoadData(keyName);
+
+        currentGold = InfVal.Parse(DataSaveManager.instance.saveDatas.gold);
+        StartCoroutine(ChangeResourceValue(ResourceType.Gold, currentGold, currentGold));
+
+        currentEnergy = InfVal.Parse(DataSaveManager.instance.saveDatas.energy);
+        StartCoroutine(ChangeResourceValue(ResourceType.Energy, currentEnergy, currentEnergy));
+
+        currentDiamond = InfVal.Parse(DataSaveManager.instance.saveDatas.diamond);
+        StartCoroutine(ChangeResourceValue(ResourceType.Diamond, currentDiamond, currentDiamond));
     }
 
 }

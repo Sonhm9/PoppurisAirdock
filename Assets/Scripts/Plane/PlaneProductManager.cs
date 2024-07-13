@@ -49,15 +49,13 @@ public class PlaneProductManager : MonoBehaviour
     [HideInInspector] public int MaxHangerIndex = 25; // 최대 겹납고 대기열 인덱스
 
 
-    private QueueController queueController; // 큐 컨트롤러
-    private PlanePrice price; // 비행체 가격표 스크립트
+    private QueueBehavior queueController; // 큐 컨트롤러
 
     private void Awake()
     {
-        queueController = GetComponent<QueueController>();
+        queueController = GetComponent<QueueBehavior>();
         _instance = this;
 
-        InitializedPlanePrice();
         goldText.text = sumPrice.ToString();
     }
     private void OnDestroy()
@@ -69,32 +67,19 @@ public class PlaneProductManager : MonoBehaviour
         BICHA,
         AIRBALLON,
         AIRSHIP,
-        GLIDER,
-        MINIPLANE,
-        IMPAIRSHIP,
-        HELICOPTER
+        STEAM_GLIDER,
+        IRON_AIRSHIP,
+        HELICOPTER,
+        IRON_GLIDER
     }
     public Queue<PlaneDataTable> planeQueue = new Queue<PlaneDataTable>(); // 비행체 큐
     public Queue<PlaneDataTable> hangerQueue = new Queue<PlaneDataTable>(); // 격납고 큐
 
-    private Dictionary<planeType, InfVal> planePrice = new Dictionary<planeType, InfVal>(); // 비행체 가격 딕셔너리
+    public InfVal sumPrice = 0; // 비행체 총 판매가격
 
-
-    private InfVal sumPrice = 0; // 비행체 총 판매가격
-
-    public void InitializedPlanePrice()
-    {
-        price = GetComponent<PlanePrice>();
-        planePrice[PlaneProductManager.planeType.BICHA] = price.BICHA_PRC;
-        planePrice[PlaneProductManager.planeType.AIRBALLON] = price.AIRBALLON_PRC;
-        planePrice[PlaneProductManager.planeType.AIRSHIP] = price.AIRSHIP_PRC;
-        planePrice[PlaneProductManager.planeType.GLIDER] = price.GLIDER_PRC;
-        planePrice[PlaneProductManager.planeType.MINIPLANE] = price.MINIPLANE_PRC;
-        planePrice[PlaneProductManager.planeType.IMPAIRSHIP] = price.IMPAIRSHIP_PRC;
-        planePrice[PlaneProductManager.planeType.HELICOPTER] = price.HELICOPTER_PRC;
-    }
     public void EnqueuePlane(PlaneDataTable planeType)
     {
+        // 비행체 인큐
         planeQueue.Enqueue(planeType);
         if (planeQueue.Count == 1 ) queueController.StartProductQueue();
     }
@@ -103,45 +88,49 @@ public class PlaneProductManager : MonoBehaviour
     {
         if (planeQueue.Count > 0)
         {
-            PlaneDataTable planeType = planeQueue.Dequeue();
-            Destroy(standByContent.content.GetChild(0).gameObject);
+            Destroy(standByContent.content.GetChild(0).gameObject); // 상단 큐의 첫번째 오브젝트 파괴
         }
+        planeQueue.Dequeue(); // 비행체 디큐
     }
 
     public void EnqueueDisplay(GameObject buttonPrefab)
     {
-        GameObject planeButton = Instantiate(buttonPrefab, standByContent.content);
         // 아이콘 삽입
+        GameObject planeButton = Instantiate(buttonPrefab, standByContent.content);
     }
     public void HangerAddElement(PlaneDataTable planeType)
     {
-        // 격납고 요소 추가
+        // 격납고 요소 추가 메서드
         hangerQueue.Enqueue(planeType); // 격납고 큐 삽입
         HangerDisplayIcon(planeType.planeIconPrefab); // 격납고 디스플레이 아이콘
 
         SumPlanePrice(planeType); // 판매가격 합산
-        Debug.Log(hangerQueue.Count);
     }
     public void HangerClearElement()
     {
-        // 격납고 요소 클리어
-        ResourceManager.instance.AddResource(ResourceManager.ResourceType.Gold, sumPrice); // 골드 획득
-        sumPrice = 0; // 판매가격 초기화
-        goldText.text = sumPrice.ToString(); // 판매가격 텍스트 갱신
-
-        hangerQueue.Clear(); // 큐 클리어
-
-        foreach (Transform child in HangerContent.transform)
+        // 격납고 요소 클리어 메서드
+        if (hangerQueue.Count > 0)
         {
-            // 격납고 요소 삭제
-            Destroy(child.gameObject);
-        }
+            ResourceManager.instance.AddResource(ResourceManager.ResourceType.Gold, sumPrice); // 골드 획득
+            sumPrice = 0; // 판매가격 초기화
+            goldText.text = sumPrice.ToString(); // 판매가격 텍스트 갱신
 
-        if (queueController.ProcessAbailable())
-        {
-            // 대기 큐 활성화
-            queueController.StartCoroutine("DescreaseTimeCoroutine");
+            hangerQueue.Clear(); // 격납고 큐 클리어
+
+            foreach (Transform child in HangerContent.transform)
+            {
+                // 격납고 요소 삭제
+                Destroy(child.gameObject);
+            }
+
+            if (queueController.ProcessAbailable())
+            {
+                // 격납고에 여유자리가 있을때
+                queueController.StartCoroutine("DescreaseTimeCoroutine"); // 다시 대기 큐 활성화
+            }
+            ResourceManager.instance.SaveResourceData(); // 자원 데이터 저장
         }
+        
     }
 
     public void HangerDisplayIcon(GameObject hangerIcon)
@@ -153,49 +142,10 @@ public class PlaneProductManager : MonoBehaviour
     
     public void SumPlanePrice(PlaneDataTable planeData)
     {
-        // 비행체 판매가격 더하기
-        switch (planeData.planeName)
-        {
-            case "Bicha":
-                sumPrice += planePrice[planeType.BICHA];
-                goldText.text = sumPrice.ToString();
-                break;
-            case "AirBalloon":
-                sumPrice += planePrice[planeType.AIRBALLON];
-                goldText.text = sumPrice.ToString();
-                break;
-            case "AirShip":
-                sumPrice += planePrice[planeType.AIRSHIP];
-                goldText.text = sumPrice.ToString();
-                break;
-            case "Glider":
-                sumPrice += planePrice[planeType.GLIDER];
-                goldText.text = sumPrice.ToString();
-                break;
-            case "MiniPlane":
-                sumPrice += planePrice[planeType.MINIPLANE];
-                goldText.text = sumPrice.ToString();
-                break;
-            case "Improved Airship":
-                sumPrice += planePrice[planeType.IMPAIRSHIP];
-                goldText.text = sumPrice.ToString();
-                break;
-            case "Helicopter":
-                sumPrice += planePrice[planeType.HELICOPTER];
-                goldText.text = sumPrice.ToString();
-                break;
-            default:
-                break;
-        }
+        // 격납고 판매가격 합산
+        sumPrice += planeData.planeValue;
+        goldText.text = sumPrice.ToString();
     }
-    /*public void MaxContentUpgrade()
-    {
-        // 최대 대기열 칸 늘림
-        GameObject standBy = Instantiate(standByPrefab, standByContent.content);
-        standBy.transform.SetSiblingIndex(MaxContentIndex);
-        MaxContentIndex++;
-
-    }*/
 
 
 

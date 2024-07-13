@@ -7,7 +7,7 @@ public class ArtifactTouchBehaviour : BuildingInteractable
     public override void OnBuildingClick()
     {
         base.OnBuildingClick();
-        ArtifactController artifactController = GetComponentInChildren<ArtifactController>();
+        ArtifactBehavior artifactController = GetComponentInChildren<ArtifactBehavior>();
         artifactController.AddEnergyValue();
     }
 }

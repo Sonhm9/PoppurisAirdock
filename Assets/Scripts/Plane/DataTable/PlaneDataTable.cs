@@ -1,4 +1,6 @@
 using UnityEngine;
+using InfiniteValue;
+
 
 [CreateAssetMenu(menuName = "ScriptableObjects/PlaneDataTable")]
 public class PlaneDataTable : ScriptableObject
@@ -7,4 +9,5 @@ public class PlaneDataTable : ScriptableObject
     public GameObject planePrefab; // 비행체 프리팹
     public GameObject planeIconPrefab; // 비행체 프리팹
     public int productTime; // 생산 시간
+    public InfVal planeValue; // 비행체 가격
 }
